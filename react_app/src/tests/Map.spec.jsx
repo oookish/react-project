@@ -3,8 +3,8 @@ import { Map } from "../jsx/Map";
 import { render } from "@testing-library/react";
 
 describe("Map", () => {
-    it("renders correctly", () => {
-        const {container} = render(<Map />)
-        expect(container.innerHTML).toMatch("Map")
-    })
-})
+  it("renders correctly", () => {
+    const { container } = render(<Map />);
+    expect(container.innerHTML).toMatch("Map");
+  });
+});
