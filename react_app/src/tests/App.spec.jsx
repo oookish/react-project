@@ -1,6 +1,6 @@
 // import React from "react";
 // import { render, fireEvent } from "@testing-library/react";
-// import App from "./App";
+// import App from "../App";
 
 // jest.mock("./Home", () => ({ Home: () => <div>Home content</div> }));
 // jest.mock("./Map", () => ({ Map: () => <div>Map content</div> }));
