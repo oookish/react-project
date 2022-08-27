@@ -1,5 +1,5 @@
 import React from "react";
-import { Map } from "../jsx/Map";
+import { Map } from "../components/Map";
 import { render } from "@testing-library/react";
 
 describe("Map", () => {

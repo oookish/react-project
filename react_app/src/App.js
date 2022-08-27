@@ -1,8 +1,8 @@
 import React from 'react';
-import { Home } from "./jsx/Home";
-import { Registration } from "./jsx/Registration";
-import { Map } from "./jsx/Map";
-import { Profile } from "./jsx/Profile";
+import { Home } from "./components/Home";
+import { Registration } from "./components/Registration";
+import { Map } from "./components/Map";
+import { Profile } from "./components/Profile";
 import './App';
 
 const PAGES = {
