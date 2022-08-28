@@ -19,7 +19,9 @@ root.render(
 
 // ReactDOM.render(
 //   <MuiThemeProvider theme={theme}>
-//     <App />
+//     <AuthProvider>
+//       <App />
+//     </AuthProvider>
 //   </MuiThemeProvider>,
 //   document.getElementById("root")
 // );
