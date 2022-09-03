@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import { withAuth } from "../AuthContex";
+import PropTypes from "prop-types";
 
 export class Home extends Component {
+
+  static propTypes = {
+    isLoggedIn: PropTypes.bool.isRequired,
+    navigate: PropTypes.func.isRequired,
+    logIn: PropTypes.func.isRequired
+  };
+
   goToProfile = () => {
     this.props.navigate("profile");
   };
