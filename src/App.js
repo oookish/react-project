@@ -42,7 +42,7 @@ class App extends React.Component {
                   onClick={() => {
                     this.navigateTo("map");
                   }}
-                >
+                > 
                   Map
                 </button>
               </li>
