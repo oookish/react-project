@@ -1,23 +1,19 @@
 import React, { Component } from "react";
-import { withAuth } from "../AuthContex";
+import { connect } from "react-redux";
+import { authenticate } from "../redux/actions";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export class Home extends Component {
-
   static propTypes = {
     isLoggedIn: PropTypes.bool.isRequired,
-    navigate: PropTypes.func.isRequired,
-    logIn: PropTypes.func.isRequired
-  };
-
-  goToProfile = () => {
-    this.props.navigate("profile");
+    authenticate: PropTypes.func.isRequired,
   };
 
   authenticate = (event) => {
     event.preventDefault();
     const { email, password } = event.target;
-    this.props.logIn(email.value, password.value);
+    this.props.authenticate(email.value, password.value);
   };
 
   render() {
@@ -26,7 +22,7 @@ export class Home extends Component {
         {this.props.isLoggedIn ? (
           <p>
             Вы вошли
-            <button onClick={this.goToProfile}>В профиль</button>
+            <Link to="/profile">В профиль</Link>
           </p>
         ) : (
           <form onSubmit={this.authenticate}>
@@ -45,4 +41,7 @@ export class Home extends Component {
   }
 }
 
-export const HomeWithAuth = withAuth(Home);
+export const HomeWithAuth = connect(
+  (state) => ({ isLoggedIn: state.auth.isLoggedIn }),
+  { authenticate }
+)(Home);

@@ -2,26 +2,12 @@ import React from "react";
 import { HomeWithAuth } from "./components/Home";
 import { Map } from "./components/Map";
 import { ProfileWithAuth } from "./components/Profile";
-import { withAuth } from "./AuthContex";
+import { PrivateRoute } from "./components/PrivateRoute";
+import { connect } from "react-redux";
 import "./App";
-
-const PAGES = {
-  home: (props) => <HomeWithAuth {...props} />,
-  map: (props) => <Map {...props} />,
-  profile: (props) => <ProfileWithAuth {...props} />,
-};
+import { Link, Routes, Route } from "react-router-dom";
 
 class App extends React.Component {
-  state = { currentPage: "home" };
-
-  navigateTo = (page) => {
-    if (this.props.isLoggedIn) {
-      this.setState({ currentPage: page });
-    } else {
-      this.setState({ currentPage: "home" });
-    }
-  };
-
   render() {
     return (
       <>
@@ -29,38 +15,24 @@ class App extends React.Component {
           <nav>
             <ul>
               <li>
-                <button
-                  onClick={() => {
-                    this.navigateTo("home");
-                  }}
-                >
-                  Home
-                </button>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <button
-                  onClick={() => {
-                    this.navigateTo("map");
-                  }}
-                > 
-                  Map
-                </button>
+                <Link to="/map">Map</Link>
               </li>
               <li>
-                <button
-                  onClick={() => {
-                    this.navigateTo("profile");
-                  }}
-                >
-                  Profile
-                </button>
+                <Link to="/profile">Profile</Link>
               </li>
             </ul>
           </nav>
         </header>
         <main>
           <section>
-            {PAGES[this.state.currentPage]({ navigate: this.navigateTo })}
+            <Routes>
+              <Route path="/" element={<HomeWithAuth />} />
+              <Route path="/map" element={<PrivateRoute><Map /></PrivateRoute>} />
+              <Route path="/profile" element={<PrivateRoute><ProfileWithAuth /></PrivateRoute>} />
+            </Routes>
           </section>
         </main>
       </>
@@ -68,4 +40,4 @@ class App extends React.Component {
   }
 }
 
-export default withAuth(App);
+export default connect((state) => ({ isLoggedIn: state.auth.isLoggedIn }))(App);
