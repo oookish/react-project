@@ -1,10 +1,10 @@
-export const LOG_IN = "LOG_IN";
-export const LOG_OUT = "LOG_OUT";
-export const AUTHENTICATE = "AUTHENTICATE";
+import { createAction } from "@reduxjs/toolkit";
 
-export const logIn = () => ({ type: LOG_IN });
-export const logOut = () => ({ type: LOG_OUT });
-export const authenticate = (email, password) => ({
-  type: AUTHENTICATE,
-  payload: { email, password },
-});
+export const setAuthState = createAction("@user/setAuthState")
+export const setUserData = createAction("@user/setUserData")
+export const clearUserData = createAction("@user/clearUserData")
+
+export const authAction = createAction("@user/authMiddleware")
+export const registrationAction = createAction("@user/registrationMiddleware")
+
+export const setPage = createAction("@ui/setPage");

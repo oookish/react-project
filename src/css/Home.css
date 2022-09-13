@@ -1,0 +1,84 @@
+login-page {
+  height: 100%;
+  display: flex;
+}
+
+.login-logo {
+  width: 192px;
+}
+
+.login__left-column {
+  position: absolute;
+  width: 485px;
+  height: 1024px;
+  left: 0px;
+  top: 0px;
+
+  background: #1c1a19;
+}
+
+.login__right-column {
+  background-image: url("../img/map.jpg");
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-column__content {
+  position: absolute;
+  width: 580px;
+  height: 631px;
+  left: 672px;
+  top: 194px;
+
+  background: #ffffff;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+.enter {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 30px;
+  padding: 56px 112px;
+  background: #fff;
+  height: 540px;
+  width: 580px;
+}
+
+.form__addition {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.btn-login {
+  cursor: pointer;
+  font-size: 25px;
+  width: 353px;
+  font-weight: 400;
+  border: none;
+  padding: 16px;
+  background: #fdbf5a;
+  border-radius: 32px;
+  margin-bottom: 5px;
+}
+
+.new-profile {
+  justify-content: center;
+  display: flex;
+}
+
+.new-profile-btn {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #fdbf5a;
+}

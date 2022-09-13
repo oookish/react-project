@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { logOut } from "../redux/actions";
+import { logIn, logOut } from "../redux/actions";
 import PropTypes from "prop-types";
 
 export class Profile extends Component {
@@ -24,4 +24,4 @@ export class Profile extends Component {
   }
 }
 
-export const ProfileWithAuth = connect(null, { logOut })(Profile);
+export const ProfileWithAuth = connect(null, { logIn, logOut })(Profile);
