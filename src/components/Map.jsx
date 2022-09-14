@@ -1,34 +1,36 @@
-import React, { Component } from "react";
-import mapboxgl from "mapbox-gl";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { selectSignInData } from "../redux/userSelector";
 
-export class Map extends Component {
-  map = null;
-  mapContainer = React.createRef();
+import { setPage } from "../redux/actions";
+import { Menu } from "./Menu";
+import { Mapbox } from "./Mapbox";
 
-  componentDidMount() {
-    mapboxgl.accessToken =
-      "pk.eyJ1Ijoib29va2lzaCIsImEiOiJjbDdibXN2eTgxNHkwM3duZ3h0ZjhxYzNpIn0.IXpUis9cqtF-i2E2NtHFFw";
+import "../css/Map.css";
 
-    this.map = new mapboxgl.Map({
-      container: this.mapContainer.current,
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [-74.5, 40],
-      zoom: 9,
-      projection: "globe",
-    });
-  }
+export const Map = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isLogIn = useSelector(selectSignInData);
 
-  componentWillUnmount() {
-    this.map.remove();
-  }
+  useEffect(() => {
+    if (isLogIn) {
+      navigate("/map");
+      dispatch(setPage("Map"));
+    } else {
+      navigate("/");
+      dispatch(setPage("Home"));
+    }
+  }, [isLogIn, navigate, dispatch]);
 
-  render() {
-    return (
-      <>
-        <div className="map-wrapper">
-          <div data-testid="map" className="map" ref={this.mapContainer}></div>
-        </div>
-      </>
-    );
-  }
-}
+  return (
+    <div className="map-page">
+      <Menu activeItem='Map'/>
+      <div className="class-container">
+        <Mapbox />
+      </div>
+    </div>
+  )
+};
+
