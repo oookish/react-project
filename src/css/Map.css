@@ -1,0 +1,15 @@
+.map-page {
+  height: 100%;
+}
+
+.map-container {
+  height: 90vh;
+}
+
+.mapbox-control-container {
+  display: none;
+}
+
+.mapbox-canvas-container {
+  height: 100%;
+}
